@@ -1,0 +1,22 @@
+<form (submit)="OnSubmit()" [formGroup]="form">
+  <mat-form-field >
+    <mat-label>Nombre*</mat-label>
+    <input formControlName="nombre" matInput />
+    <mat-error *ngIf="form.invalid">El nombre es requerido</mat-error>
+  </mat-form-field>
+
+  <h4>Seleccione el cine en el mapa</h4>
+  <div>
+    <app-mapas
+      (coordenadaSeleccionada) ="coordenadaSeleccionada($event)"
+      [coodendasIniciales]="coodenadaInical"    
+  ></app-mapas>
+  </div>
+
+  <div>
+    <button mat-flat-button color="primary" [disabled]="form.invalid">
+      Guardar Cambios
+    </button>
+    <a mat-stroked-button routerlink="/cines">Cancelar</a>
+  </div>
+</form>
