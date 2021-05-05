@@ -4,6 +4,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MarkdownModule } from 'ngx-markdown';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import 'leaflet/dist/images/marker-shadow.png';
+import { HttpClientModule } from '@angular/common/http';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +37,7 @@ import { MapasComponent } from './components/shared/mapas/mapas.component';
 import { FormularioPeliculasComponent } from './components/peliculas/formulario-peliculas/formulario-peliculas.component';
 import { SelectorMultipleComponent } from './components/shared/selector-multiple/selector-multiple.component';
 import { AutocompleteActoresComponent } from './components/actores/autocomplete-actores/autocomplete-actores.component';
+import { MostrarErroresComponent } from './components/shared/mostrar-errores/mostrar-errores.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +67,8 @@ import { AutocompleteActoresComponent } from './components/actores/autocomplete-
     MapasComponent,
     FormularioPeliculasComponent,
     SelectorMultipleComponent,
-    AutocompleteActoresComponent
+    AutocompleteActoresComponent,
+    MostrarErroresComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +78,9 @@ import { AutocompleteActoresComponent } from './components/actores/autocomplete-
     ReactiveFormsModule,
     LeafletModule,
     FormsModule,
-    MarkdownModule.forRoot()
+    HttpClientModule,
+    MarkdownModule.forRoot(),
+    SweetAlert2Module.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

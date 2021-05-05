@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { parsearErroresApi } from '../../shared/utilidades';
 import { generoCreacionDTO } from '../genero';
+import { GenerosService } from '../generos.service';
 
 @Component({
   selector: 'app-crear-genero',
@@ -8,13 +10,15 @@ import { generoCreacionDTO } from '../genero';
   styleUrls: ['./crear-genero.component.css']
 })
 export class CrearGeneroComponent {
+  errores: string[] = [];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private generoService: GenerosService) { }
 
   guardarCambios(genero: generoCreacionDTO){
-    //... guardar el genero con la web api
-    console.log(genero);
-    this.router.navigate(['/generos']);
+    this.generoService.crear(genero).subscribe(() => {
+      this.router.navigate(['/generos']);
+    }, (error) => this.errores = parsearErroresApi(error)
+    );
   }
 
 }
